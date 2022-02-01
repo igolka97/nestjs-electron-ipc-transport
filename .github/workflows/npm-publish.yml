@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: 16
       - run: yarn
-      - run: yarn config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
       - run: yarn build
       - run: yarn publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
